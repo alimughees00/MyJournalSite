@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+Sitemap: https://myjournal.app/sitemap.xml
+
+# Crawl delay for polite crawling
+Crawl-delay: 1
