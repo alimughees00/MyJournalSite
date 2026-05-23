@@ -66,7 +66,7 @@ export function FinalCTA() {
               className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
             >
               <a
-                href="https://play.google.com/store/apps/details?id=com.myjournal"
+                href="https://play.google.com/store/apps/details?id=com.baltorotech.myjournal"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
@@ -74,7 +74,7 @@ export function FinalCTA() {
                 <Download className="w-5 h-5" />
                 Get on Google Play
               </a>
-              <a
+              {/* <a
                 href="https://apps.apple.com/app/myjournal"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -82,7 +82,7 @@ export function FinalCTA() {
               >
                 <Download className="w-5 h-5" />
                 Download on App Store
-              </a>
+              </a> */}
             </motion.div>
 
             {/* Newsletter Signup */}

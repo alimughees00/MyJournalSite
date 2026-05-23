@@ -38,7 +38,7 @@ export function Footer() {
     { icon: Twitter, href: "https://twitter.com/myjournal", label: "Twitter" },
     {
       icon: Instagram,
-      href: "https://instagram.com/myjournal",
+      href: "https://instagram.com/myjournalmyjournal",
       label: "Instagram",
     },
     {
@@ -46,7 +46,11 @@ export function Footer() {
       href: "https://linkedin.com/company/myjournal",
       label: "LinkedIn",
     },
-    { icon: Github, href: "https://github.com/myjournal", label: "GitHub" },
+    {
+      icon: Github,
+      href: "https://github.com/alimughees00/MyJournalSite",
+      label: "GitHub",
+    },
   ];
 
   return (

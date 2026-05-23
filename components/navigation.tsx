@@ -82,7 +82,7 @@ export function Navigation() {
 
           {/* Download Button - Hidden on mobile */}
           <a
-            href="#download"
+            href="https://play.google.com/store/apps/details?id=com.baltorotech.myjournal"
             className="hidden sm:inline-flex btn-primary text-sm"
           >
             Download

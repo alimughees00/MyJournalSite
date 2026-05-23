@@ -150,7 +150,7 @@ export function FAQ() {
             is here to help. Get in touch with us anytime.
           </p>
           <a
-            href="mailto:support@myjournal.app"
+            href="mailto:feedback@baltorotech.com"
             className="inline-flex items-center px-8 py-4 bg-white text-primary-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
           >
             Contact Support

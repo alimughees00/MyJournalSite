@@ -81,7 +81,10 @@ export function Hero() {
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-4 pt-4"
             >
-              <a href="#download" className="btn-primary group text-base">
+              <a
+                href="https://play.google.com/store/apps/details?id=com.baltorotech.myjournal"
+                className="btn-primary group text-base"
+              >
                 <Download className="w-5 h-5 group-hover:animate-bounce" />
                 Download on Google Play
               </a>
