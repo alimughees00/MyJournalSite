@@ -74,15 +74,6 @@ export function FinalCTA() {
                 <Download className="w-5 h-5" />
                 Get on Google Play
               </a>
-              {/* <a
-                href="https://apps.apple.com/app/myjournal"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
-              >
-                <Download className="w-5 h-5" />
-                Download on App Store
-              </a> */}
             </motion.div>
 
             {/* Newsletter Signup */}
@@ -149,8 +140,6 @@ export function FinalCTA() {
               <span>⭐ 4.9★ Rating on App Stores</span>
               <span>•</span>
               <span>🔒 Privacy Guaranteed</span>
-              <span>•</span>
-              <span>📱 iOS & Android</span>
             </motion.div>
           </div>
         </motion.div>

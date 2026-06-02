@@ -1,195 +1,208 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { PlayCircle, Download } from "lucide-react";
+import Image from "next/image";
+import { Download, Play } from "lucide-react";
 
 export function Hero() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
+  const fadeUp = {
+    hidden: { opacity: 0, y: 24 },
+    visible: (delay = 0) => ({
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
-    },
+      transition: { duration: 0.7, ease: "easeOut", delay },
+    }),
   };
 
-  const phoneVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut", delay: 0.3 },
-    },
-    float: {
-      y: [-20, 20, -20],
-      transition: {
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
-    },
-  };
+  const moodEmojis = ["😊", "😌", "😢", "😤", "😴"];
+  const now = new Date();
+  const todayLabel = `${now.toLocaleDateString("en-US", { weekday: "long" })}, ${now.toLocaleDateString("en-US", { month: "long", day: "numeric" })} · ${now.getFullYear()}`;
 
   return (
-    <section className="pt-32 pb-20 sm:pt-40 sm:pb-32 bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900 overflow-hidden">
-      <div className="container-max">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Content */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="space-y-6"
+    <section className="min-h-screen grid grid-cols-1 lg:grid-cols-2 relative overflow-hidden">
+      {/* ── LEFT PANEL ── */}
+      <div className="flex flex-col justify-center px-12 lg:px-16 pt-32 pb-20 relative z-10">
+        {/* Badge */}
+        <motion.div
+          custom={0.0}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="inline-flex items-center gap-2 bg-primary-50 dark:bg-primary-950 text-primary-600 dark:text-primary-400 text-xs font-medium px-4 py-2 rounded-full w-fit mb-6"
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse" />
+          Your Private Journal App
+        </motion.div>
+
+        {/* Eyebrow */}
+        <motion.p
+          custom={0.1}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-xs font-medium tracking-widest uppercase text-gray-400 dark:text-gray-500 mb-4"
+        >
+          Reflect · Grow · Remember
+        </motion.p>
+
+        {/* Headline */}
+        <motion.h1
+          custom={0.15}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="font-serif text-5xl lg:text-6xl font-semibold leading-[1.12] tracking-tight text-gray-900 dark:text-white mb-6"
+        >
+          A space to think{" "}
+          <em className="not-italic gradient-text">clearly, </em>
+          and feel <em className="not-italic gradient-text">understood</em>
+        </motion.h1>
+
+        {/* Body */}
+        <motion.p
+          custom={0.25}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-base text-gray-500 dark:text-gray-400 leading-relaxed max-w-sm font-light mb-10"
+        >
+          Track moods, write daily thoughts, and build healthy journaling habits
+          — with complete privacy. Your journal is encrypted and only yours.
+        </motion.p>
+
+        {/* CTAs */}
+        <motion.div
+          custom={0.35}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex items-center gap-4 mb-14"
+        >
+          <a
+            href="https://play.google.com/store/apps/details?id=com.baltorotech.myjournal"
+            className="btn-primary flex items-center gap-2 text-sm rounded-full px-7 py-3.5 shadow-lg shadow-primary-500/30 hover:-translate-y-0.5 transition-transform"
           >
-            <motion.div variants={itemVariants}>
-              <span className="inline-flex items-center px-4 py-2 bg-primary-50 dark:bg-primary-950 rounded-full text-primary-600 dark:text-primary-400 text-sm font-medium">
-                ✨ Your Private Journal App
-              </span>
-            </motion.div>
+            <Download className="w-4 h-4" />
+            Get on Google Play
+          </a>
+          {/* <button className="flex items-center gap-2.5 text-sm text-gray-500 dark:text-gray-400 hover:text-primary-600 transition-colors">
+            <span className="w-8 h-8 rounded-full border border-current flex items-center justify-center">
+              <Play className="w-3 h-3 fill-current ml-0.5" />
+            </span>
+            Watch demo
+          </button> */}
+        </motion.div>
 
-            <motion.h1
-              variants={itemVariants}
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight"
-            >
-              Your Private Space to{" "}
-              <span className="gradient-text">Reflect & Grow</span>
-            </motion.h1>
-
-            <motion.p
-              variants={itemVariants}
-              className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-xl"
-            >
-              Track moods, write daily thoughts, and build healthy journaling
-              habits with complete privacy. Your journal is encrypted and only
-              yours.
-            </motion.p>
-
-            {/* CTA Buttons */}
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4 pt-4"
-            >
-              <a
-                href="https://play.google.com/store/apps/details?id=com.baltorotech.myjournal"
-                className="btn-primary group text-base"
-              >
-                <Download className="w-5 h-5 group-hover:animate-bounce" />
-                Download on Google Play
-              </a>
-              <button className="btn-secondary group text-base">
-                <PlayCircle className="w-5 h-5" />
-                Watch Demo
-              </button>
-            </motion.div>
-
-            {/* Trust Badge */}
-            <motion.div
-              variants={itemVariants}
-              className="flex items-center gap-6 pt-4 border-t border-gray-200 dark:border-gray-800"
-            >
+        {/* Trust strip */}
+        <motion.div
+          custom={0.45}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex items-center gap-8"
+        >
+          {[
+            { num: "500K+", label: "Active users" },
+            { num: "4.9 ★", label: "App rating" },
+            { num: "100%", label: "Encrypted" },
+          ].map((stat, i) => (
+            <div key={i} className="flex items-center gap-8">
+              {i > 0 && (
+                <div className="w-px h-8 bg-gray-200 dark:bg-gray-800" />
+              )}
               <div>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">
-                  500K+
+                <p className="font-serif text-xl font-semibold text-gray-900 dark:text-white leading-none">
+                  {stat.num}
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Active Users
+                <p className="text-xs text-gray-400 mt-1 tracking-wide">
+                  {stat.label}
                 </p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">
-                  4.9★
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  App Rating
-                </p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">
-                  100%
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Private
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Right - Phone Mockup */}
-          <motion.div
-            variants={phoneVariants}
-            initial="hidden"
-            whileInView="visible"
-            animate="float"
-            viewport={{ once: true }}
-            className="relative h-96 sm:h-[500px] lg:h-[600px]"
-          >
-            {/* Glow Background */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary-600/20 to-accent-600/20 rounded-3xl blur-3xl"></div>
-
-            {/* Phone Frame */}
-            <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black rounded-3xl shadow-2xl overflow-hidden border-8 border-gray-800">
-              {/* Notch */}
-              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-8 bg-black rounded-b-3xl z-10"></div>
-
-              {/* Screen Content - Placeholder */}
-              <div className="w-full h-full bg-gradient-to-br from-primary-50 to-accent-50 dark:from-primary-950 dark:to-accent-950 flex flex-col items-center justify-center">
-                <div className="space-y-4 text-center px-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary-600 to-accent-600 rounded-full mx-auto shadow-lg"></div>
-                  <h3 className="text-xl font-bold text-gray-900">
-                    Today&apos;s Mood
-                  </h3>
-                  <p className="text-sm text-gray-600">April 21, 2026</p>
-                  <div className="grid grid-cols-5 gap-2 pt-4">
-                    {["😊", "😌", "😢", "😤", "😴"].map((emoji, i) => (
-                      <div
-                        key={i}
-                        className="text-2xl p-2 bg-white rounded-lg shadow hover:shadow-md transition-shadow"
-                      >
-                        {emoji}
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
             </div>
-          </motion.div>
-        </div>
+          ))}
+        </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* ── RIGHT PANEL ── */}
       <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        viewport={{ once: true }}
+        className="relative hidden lg:flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary-50 to-accent-50 dark:from-primary-950 dark:to-accent-950"
       >
-        <p className="text-sm text-gray-600 dark:text-gray-400">
-          Scroll to explore
-        </p>
-        <svg
-          className="w-5 h-5 text-primary-600"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+        {/* BG accents */}
+        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary-500/10 blur-3xl" />
+        <div className="absolute -bottom-16 -left-16 w-72 h-72 rounded-full bg-accent-500/15 blur-3xl" />
+
+        {/* Floating left card */}
+        <motion.div
+          animate={{ y: [-8, 2, -8] }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+          className="absolute left-6 top-1/2 -translate-y-28 bg-white dark:bg-gray-900 rounded-2xl px-4 py-3 shadow-xl border border-primary-100 dark:border-primary-900 z-10"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"
-          />
-        </svg>
+          <p className="text-[10px] text-gray-400 mb-1">Today's streak</p>
+          <p className="text-base font-semibold text-gray-900 dark:text-white font-serif">
+            🔥 14 days
+          </p>
+          <p className="text-[10px] text-primary-500 font-medium">
+            Personal best!
+          </p>
+        </motion.div>
+
+        {/* Phone */}
+        <motion.div
+          animate={{ y: [-18, 0, -18] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="relative z-10"
+        >
+          {/* Shell */}
+          <div className="w-56 h-[460px] bg-gray-900 rounded-[36px] p-2.5 shadow-[0_40px_80px_rgba(0,0,0,0.35)] relative overflow-hidden">
+            {/* Notch */}
+            <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-20 h-5 bg-gray-900 rounded-b-2xl z-10" />
+            {/* Screen */}
+            <div className="relative w-full h-full bg-white dark:bg-gray-950 rounded-[28px] overflow-hidden">
+              <Image
+                src="/assets/1.jpeg"
+                alt="MyJournal screenshot"
+                fill
+                className="object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-black/0" />
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Floating right card */}
+        <motion.div
+          animate={{ y: [0, -10, 0] }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+          className="absolute right-6 bottom-1/3 bg-white dark:bg-gray-900 rounded-2xl px-4 py-3 shadow-xl border border-accent-100 dark:border-accent-900 z-10"
+        >
+          <p className="text-[10px] text-gray-400 mb-1">Mood this week</p>
+          <p className="text-base font-semibold text-gray-900 dark:text-white font-serif">
+            Mostly 😊
+          </p>
+          <p className="text-[10px] text-accent-500 font-medium">
+            Up from last week
+          </p>
+        </motion.div>
       </motion.div>
     </section>
   );

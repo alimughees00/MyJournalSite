@@ -20,18 +20,7 @@ export function Footer() {
       { name: "Pricing", href: "#" },
       { name: "Security", href: "#" },
     ],
-    Company: [
-      { name: "About Us", href: "#" },
-      { name: "Blog", href: "#" },
-      { name: "Careers", href: "#" },
-      { name: "Press Kit", href: "#" },
-    ],
-    Legal: [
-      { name: "Privacy Policy", href: "#" },
-      { name: "Terms of Service", href: "#" },
-      { name: "Cookie Policy", href: "#" },
-      { name: "Contact", href: "#" },
-    ],
+    Company: [{ name: "About Us", href: "#" }],
   };
 
   const socialLinks = [
@@ -57,14 +46,14 @@ export function Footer() {
     <footer className="bg-gray-900 dark:bg-black text-gray-300 dark:text-gray-400">
       <div className="container-max">
         {/* Main Footer Content */}
-        <div className="py-16 sm:py-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-8">
+        <div className="py-16 sm:py-20 flex flex-col lg:flex-row items-start justify-between gap-12">
           {/* Brand Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="lg:col-span-1"
+            className="w-full lg:w-auto"
           >
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 bg-gradient-to-br from-primary-600 to-accent-600 rounded-lg flex items-center justify-center">
@@ -76,7 +65,7 @@ export function Footer() {
               </div>
               <span className="font-bold text-lg text-white">MyJournal</span>
             </div>
-            <p className="text-sm leading-relaxed mb-6">
+            <p className="text-sm leading-relaxed mb-6 w-full max-w-sm">
               Your private space to reflect and grow. Daily journaling made
               beautiful and secure.
             </p>
@@ -101,31 +90,34 @@ export function Footer() {
           </motion.div>
 
           {/* Footer Links */}
-          {Object.entries(footerLinks).map(
-            ([category, links], categoryIndex) => (
-              <motion.div
-                key={category}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <h3 className="font-semibold text-white mb-4">{category}</h3>
-                <ul className="space-y-3">
-                  {links.map((link) => (
-                    <li key={link.name}>
-                      <a
-                        href={link.href}
-                        className="text-gray-400 hover:text-primary-400 transition-colors text-sm"
-                      >
-                        {link.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ),
-          )}
+          <div className="flex flex-wrap items-start gap-12 flex-1">
+            {Object.entries(footerLinks).map(
+              ([category,   links], categoryIndex) => (
+                <motion.div
+                  key={category}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
+                  viewport={{ once: true }}
+                  className="min-w-[170px]"
+                >
+                  <h3 className="font-semibold text-white mb-4">{category}</h3>
+                  <ul className="space-y-3 text-sm">
+                    {links.map((link) => (
+                      <li key={link.name}>
+                        <a
+                          href={link.href}
+                          className="text-gray-400 hover:text-primary-400 transition-colors"
+                        >
+                          {link.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ),
+            )}
+          </div>
         </div>
 
         {/* Divider */}
@@ -155,7 +147,7 @@ export function Footer() {
           <div className="flex items-center gap-2 text-sm">
             <Mail className="w-4 h-4" />
             <a
-              href="mailto:hello@myjournal.app"
+              href="mailto:feedback@baltorotech.com"
               className="text-gray-400 hover:text-primary-400 transition-colors"
             >
               feedback@baltorotech.com

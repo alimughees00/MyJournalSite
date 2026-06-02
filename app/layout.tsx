@@ -67,6 +67,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://myjournal.app",
   },
+  icons: {
+    icon: "/assets/favicon-32x32.png",
+  },
 };
 
 export default function RootLayout({
@@ -78,12 +81,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={inter.variable}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/assets/favicon-32x32.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#5b79ff" />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           {children}
         </ThemeProvider>

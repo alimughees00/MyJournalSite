@@ -7,7 +7,7 @@ import Image from "next/image";
 const screenshots = [
   {
     id: 1,
-    title: "Mood Tracking",
+    title: "Build a healthy journaling habit",
     description: "Log your daily mood with detailed tracking and insights.",
     image: "/assets/1.jpeg",
   },
@@ -82,13 +82,15 @@ export function Screenshots() {
                 </div>
 
                 {/* Screenshot Image */}
-                <div className="relative flex-1 ">
-                  <Image
-                    src={screenshot.image}
-                    alt={screenshot.title}
-                    fill
-                    className="object-contain"
-                  />
+                <div className="relative flex-1 overflow-hidden flex items-center justify-center">
+                  <div className="relative w-full max-w-[240px] aspect-[9/16]">
+                    <Image
+                      src={screenshot.image}
+                      alt={screenshot.title}
+                      fill
+                      className="object-contain object-center"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -120,13 +122,15 @@ export function Screenshots() {
               </div>
 
               {/* Screenshot Image */}
-              <div className="relative w-full h-full">
-                <Image
-                  src={screenshots[activeIndex].image}
-                  alt={screenshots[activeIndex].title}
-                  fill
-                  className="object-contain"
-                />
+              <div className="relative w-full h-full overflow-hidden flex items-center justify-center">
+                <div className="relative w-full max-w-[360px] aspect-[9/16]">
+                  <Image
+                    src={screenshots[activeIndex].image}
+                    alt={screenshots[activeIndex].title}
+                    fill
+                    className="object-contain object-center"
+                  />
+                </div>
               </div>
             </div>
 
