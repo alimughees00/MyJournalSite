@@ -17,8 +17,8 @@ export function Footer() {
     Product: [
       { name: "Features", href: "#features" },
       { name: "Screenshots", href: "#screenshots" },
-      { name: "Pricing", href: "#" },
-      { name: "Security", href: "#" },
+      { name: "Benefits", href: "#benefits" },
+      { name: "FAQs", href: "#faq" },
     ],
     Company: [{ name: "About Us", href: "#" }],
   };
@@ -45,114 +45,139 @@ export function Footer() {
   return (
     <footer className="bg-gray-900 dark:bg-black text-gray-300 dark:text-gray-400">
       <div className="container-max">
-        {/* Main Footer Content */}
-        <div className="py-16 sm:py-20 flex flex-col lg:flex-row items-start justify-between gap-12">
-          {/* Brand Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="w-full lg:w-auto"
-          >
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary-600 to-accent-600 rounded-lg flex items-center justify-center">
-                <img
-                  src="/assets/my-journal.png"
-                  alt="MyJournal"
-                  className="w-8 h-8 object-contain"
-                />
+        {/* Main Footer */}
+        <div className="py-10 sm:py-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
+            {/* Brand */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="lg:col-span-1"
+            >
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-8 h-8 bg-gradient-to-br from-primary-600 to-accent-600 rounded-lg flex items-center justify-center">
+                  <img
+                    src="/assets/my-journal.png"
+                    alt="MyJournal"
+                    className="w-8 h-8 object-contain"
+                  />
+                </div>
+                <span className="font-bold text-lg text-white">MyJournal</span>
               </div>
-              <span className="font-bold text-lg text-white">MyJournal</span>
-            </div>
-            <p className="text-sm leading-relaxed mb-6 w-full max-w-sm">
-              Your private space to reflect and grow. Daily journaling made
-              beautiful and secure.
-            </p>
-            <div className="flex items-center gap-4">
-              {socialLinks.map((link) => {
-                const Icon = link.icon;
-                return (
-                  <motion.a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.2, color: "#5b79ff" }}
-                    className="p-2 bg-gray-800 rounded-lg hover:bg-primary-600 transition-colors"
-                    aria-label={link.label}
-                  >
-                    <Icon className="w-5 h-5" />
-                  </motion.a>
-                );
-              })}
-            </div>
-          </motion.div>
 
-          {/* Footer Links */}
-          <div className="flex flex-wrap items-start gap-12 flex-1">
-            {Object.entries(footerLinks).map(
-              ([category,   links], categoryIndex) => (
-                <motion.div
-                  key={category}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-                  viewport={{ once: true }}
-                  className="min-w-[170px]"
+              <p className="text-sm leading-relaxed mb-4 text-gray-400">
+                Your private space to reflect and grow.
+              </p>
+
+              {/* <div className="flex items-center gap-3">
+                {socialLinks.map((link) => {
+                  const Icon = link.icon;
+                  return (
+                    <motion.a
+                      key={link.label}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.1 }}
+                      className="p-2 bg-gray-800 rounded-lg hover:bg-primary-600 transition-colors"
+                      aria-label={link.label}
+                    >
+                      <Icon className="w-4 h-4" />
+                    </motion.a>
+                  );
+                })}
+              </div> */}
+            </motion.div>
+
+            {/* Product */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="font-semibold text-white mb-3">Product</h3>
+              <ul className="space-y-2 text-sm">
+                {footerLinks.Product.map((link) => (
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      className="text-gray-400 hover:text-primary-400 transition-colors"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Company */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="font-semibold text-white mb-3">Company</h3>
+              <ul className="space-y-2 text-sm">
+                {footerLinks.Company.map((link) => (
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      className="text-gray-400 hover:text-primary-400 transition-colors"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Contact */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="font-semibold text-white mb-3">Contact</h3>
+              <div className="flex items-start gap-2 text-sm text-gray-400">
+                <Mail className="w-4 h-4 mt-0.5 shrink-0" />
+                <a
+                  href="mailto:feedback@baltorotech.com"
+                  className="hover:text-primary-400 transition-colors break-all"
                 >
-                  <h3 className="font-semibold text-white mb-4">{category}</h3>
-                  <ul className="space-y-3 text-sm">
-                    {links.map((link) => (
-                      <li key={link.name}>
-                        <a
-                          href={link.href}
-                          className="text-gray-400 hover:text-primary-400 transition-colors"
-                        >
-                          {link.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ),
-            )}
+                  feedback@baltorotech.com
+                </a>
+              </div>
+            </motion.div>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-800"></div>
+        <div className="border-t border-gray-800" />
 
-        {/* Bottom Section */}
+        {/* Bottom Bar */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-          className="py-8 flex flex-col sm:flex-row items-center justify-between gap-4"
+          className="py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-gray-500"
         >
-          {/* Copyright */}
-          <div className="flex items-center gap-2 text-sm text-gray-500">
-            <span>© {currentYear} MyJournal. Made with</span>
+          <div className="flex items-center gap-2">
+            <span>© {currentYear} MyJournal</span>
             <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
+              animate={{ scale: [1, 1.15, 1] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             >
               <Heart className="w-4 h-4 text-red-500 fill-red-500" />
             </motion.div>
-            <span>for your wellness.</span>
           </div>
 
-          {/* Contact */}
-          <div className="flex items-center gap-2 text-sm">
-            <Mail className="w-4 h-4" />
-            <a
-              href="mailto:feedback@baltorotech.com"
-              className="text-gray-400 hover:text-primary-400 transition-colors"
-            >
-              feedback@baltorotech.com
-            </a>
-          </div>
+          <p className="text-center sm:text-right">Made for your wellness</p>
         </motion.div>
       </div>
     </footer>

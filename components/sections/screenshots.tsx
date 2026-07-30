@@ -31,6 +31,11 @@ const screenshots = [
   },
 ];
 
+// Real phone screens are ~9:19.5 (iPhone) not 9:16. Tune this if your
+// screenshots come from a different device (e.g. "9/20" for many Androids,
+// "9/19.5" for iPhone 12+, "3/4" for a more "tablet-ish" frame).
+const PHONE_ASPECT = "9/19.5";
+
 export function Screenshots() {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -64,41 +69,36 @@ export function Screenshots() {
         </motion.div>
 
         {/* Screenshots Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {screenshots.map((screenshot, index) => (
             <motion.button
               key={screenshot.id}
               onClick={() => setActiveIndex(index)}
               whileHover={{ y: -4 }}
-              className={`relative h-96 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 border-8 border-gray-800 ${
+              className={`relative mx-auto w-full max-w-[220px] rounded-[2rem] overflow-hidden cursor-pointer transition-all duration-300 border-[6px] border-gray-800 ${
                 activeIndex === index ? "ring-2 ring-primary-600 scale-105" : ""
               }`}
+              style={{ aspectRatio: PHONE_ASPECT }}
             >
               {/* Phone Frame */}
-              <div className="w-full h-full bg-gray-900 rounded-xl flex flex-col relative">
-                {/* Status Bar */}
-                <div className="h-10 bg-black rounded-b-2xl flex items-center justify-center shrink-0">
-                  <div className="text-white text-xs">9:41</div>
-                </div>
+              <div className="relative w-full h-full bg-gray-900">
+                {/* Notch */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-4 bg-black rounded-b-xl z-10" />
 
-                {/* Screenshot Image */}
-                <div className="relative flex-1 overflow-hidden flex items-center justify-center">
-                  <div className="relative w-full max-w-[240px] aspect-[9/16]">
-                    <Image
-                      src={screenshot.image}
-                      alt={screenshot.title}
-                      fill
-                      className="object-contain object-center"
-                    />
-                  </div>
-                </div>
+                {/* Screenshot Image fills the whole screen area */}
+                <Image
+                  src={screenshot.image}
+                  alt={screenshot.title}
+                  fill
+                  className="object-cover object-top"
+                />
               </div>
 
               {/* Active Indicator */}
               {activeIndex === index && (
                 <motion.div
                   layoutId="activeIndicator"
-                  className="absolute bottom-2 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rounded-full"
+                  className="absolute bottom-2 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rounded-full z-20"
                 />
               )}
             </motion.button>
@@ -115,23 +115,20 @@ export function Screenshots() {
         >
           <div className="flex flex-col sm:flex-row gap-8 items-center">
             {/* Phone Mockup */}
-            <div className="relative w-full sm:w-1/3 h-96 border-8 border-gray-800 rounded-3xl overflow-hidden shadow-2xl">
-              {/* Status Bar */}
-              <div className="h-8 bg-black flex items-center justify-center shrink-0 relative z-10">
-                <div className="text-white text-xs"></div>
-              </div>
+            <div
+              className="relative w-full max-w-[220px] sm:w-1/3 mx-auto border-[6px] border-gray-800 rounded-[2rem] overflow-hidden shadow-2xl"
+              style={{ aspectRatio: PHONE_ASPECT }}
+            >
+              {/* Notch */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-black rounded-b-2xl z-10" />
 
-              {/* Screenshot Image */}
-              <div className="relative w-full h-full overflow-hidden flex items-center justify-center">
-                <div className="relative w-full max-w-[360px] aspect-[9/16]">
-                  <Image
-                    src={screenshots[activeIndex].image}
-                    alt={screenshots[activeIndex].title}
-                    fill
-                    className="object-contain object-center"
-                  />
-                </div>
-              </div>
+              {/* Screenshot Image fills the whole screen area */}
+              <Image
+                src={screenshots[activeIndex].image}
+                alt={screenshots[activeIndex].title}
+                fill
+                className="object-cover object-top"
+              />
             </div>
 
             {/* Details */}

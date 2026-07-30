@@ -141,7 +141,7 @@ export function Hero() {
         <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary-500/10 blur-3xl" />
         <div className="absolute -bottom-16 -left-16 w-72 h-72 rounded-full bg-accent-500/15 blur-3xl" />
 
-        {/* Floating left card */}
+        {/* Floating left text card */}
         <motion.div
           animate={{ y: [-8, 2, -8] }}
           transition={{
@@ -150,14 +150,11 @@ export function Hero() {
             ease: "easeInOut",
             delay: 2,
           }}
-          className="absolute left-6 top-1/2 -translate-y-28 bg-white dark:bg-gray-900 rounded-2xl px-4 py-3 shadow-xl border border-primary-100 dark:border-primary-900 z-10"
+          className="absolute left-6 top-1/2 -translate-y-28 max-w-[160px] bg-white dark:bg-gray-900 rounded-2xl px-4 py-3 shadow-xl border border-primary-100 dark:border-primary-900 z-10"
         >
-          <p className="text-[10px] text-gray-400 mb-1">Today's streak</p>
-          <p className="text-base font-semibold text-gray-900 dark:text-white font-serif">
-            🔥 14 days
-          </p>
-          <p className="text-[10px] text-primary-500 font-medium">
-            Personal best!
+          <p className="text-[10px] text-gray-400 mb-1">Daily practice</p>
+          <p className="text-sm font-semibold text-gray-900 dark:text-white font-serif leading-snug">
+            A few quiet minutes, every day
           </p>
         </motion.div>
 
@@ -184,7 +181,7 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* Floating right card */}
+        {/* Floating right text card */}
         <motion.div
           animate={{ y: [0, -10, 0] }}
           transition={{
@@ -193,14 +190,11 @@ export function Hero() {
             ease: "easeInOut",
             delay: 1,
           }}
-          className="absolute right-6 bottom-1/3 bg-white dark:bg-gray-900 rounded-2xl px-4 py-3 shadow-xl border border-accent-100 dark:border-accent-900 z-10"
+          className="absolute right-6 bottom-1/3 max-w-[160px] bg-white dark:bg-gray-900 rounded-2xl px-4 py-3 shadow-xl border border-accent-100 dark:border-accent-900 z-10"
         >
-          <p className="text-[10px] text-gray-400 mb-1">Mood this week</p>
-          <p className="text-base font-semibold text-gray-900 dark:text-white font-serif">
-            Mostly 😊
-          </p>
-          <p className="text-[10px] text-accent-500 font-medium">
-            Up from last week
+          <p className="text-[10px] text-gray-400 mb-1">Private by design</p>
+          <p className="text-sm font-semibold text-gray-900 dark:text-white font-serif leading-snug">
+            Encrypted, just for you
           </p>
         </motion.div>
       </motion.div>
