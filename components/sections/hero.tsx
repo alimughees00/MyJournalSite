@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Download, Play } from "lucide-react";
+import { Download } from "lucide-react";
 
 export function Hero() {
   const fadeUp = {
@@ -13,10 +13,6 @@ export function Hero() {
       transition: { duration: 0.7, ease: "easeOut", delay },
     }),
   };
-
-  const moodEmojis = ["😊", "😌", "😢", "😤", "😴"];
-  const now = new Date();
-  const todayLabel = `${now.toLocaleDateString("en-US", { weekday: "long" })}, ${now.toLocaleDateString("en-US", { month: "long", day: "numeric" })} · ${now.getFullYear()}`;
 
   return (
     <section className="min-h-screen grid grid-cols-1 lg:grid-cols-2 relative overflow-hidden">

@@ -1,14 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Mail,
-  Github,
-  Twitter,
-  Linkedin,
-  Instagram,
-  Heart,
-} from "lucide-react";
+import { Mail, Heart } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -22,25 +15,6 @@ export function Footer() {
     ],
     Company: [{ name: "About Us", href: "#" }],
   };
-
-  const socialLinks = [
-    { icon: Twitter, href: "https://twitter.com/myjournal", label: "Twitter" },
-    {
-      icon: Instagram,
-      href: "https://instagram.com/myjournalmyjournal",
-      label: "Instagram",
-    },
-    {
-      icon: Linkedin,
-      href: "https://linkedin.com/company/myjournal",
-      label: "LinkedIn",
-    },
-    {
-      icon: Github,
-      href: "https://github.com/alimughees00/MyJournalSite",
-      label: "GitHub",
-    },
-  ];
 
   return (
     <footer className="bg-gray-900 dark:bg-black text-gray-300 dark:text-gray-400">
@@ -70,25 +44,6 @@ export function Footer() {
               <p className="text-sm leading-relaxed mb-4 text-gray-400">
                 Your private space to reflect and grow.
               </p>
-
-              {/* <div className="flex items-center gap-3">
-                {socialLinks.map((link) => {
-                  const Icon = link.icon;
-                  return (
-                    <motion.a
-                      key={link.label}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1 }}
-                      className="p-2 bg-gray-800 rounded-lg hover:bg-primary-600 transition-colors"
-                      aria-label={link.label}
-                    >
-                      <Icon className="w-4 h-4" />
-                    </motion.a>
-                  );
-                })}
-              </div> */}
             </motion.div>
 
             {/* Product */}
